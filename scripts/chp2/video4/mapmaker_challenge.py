@@ -2,6 +2,8 @@
 
 class Point():
     def __init__(self, name, latitude, longitude):
+        if not isinstance(name, str):
+            raise TypeError("name should be a string")
         self.name = name
 
         if not (-90 <= latitude <= 90) or not (-180 <= longitude <= 180):
