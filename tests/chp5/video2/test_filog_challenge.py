@@ -50,5 +50,15 @@ def test_add_invalid_activity(create_tracker, create_overlapping_times):
 """
 
 
-def test_function():  # change function name here
-    pass
+def test_delete_activity(create_tracker):  # change function name here
+    fitness_tracker = create_tracker
+    activities = fitness_tracker.get_activities()
+    assert len(activities) == 1
+
+    kind = activities[0][0]
+    start_time = activities[0][1]
+    end_time = activities[0][2]
+    fitness_tracker.delete_activity(kind, start_time, end_time)
+
+    activities = fitness_tracker.get_activities()
+    assert len(activities) == 0
